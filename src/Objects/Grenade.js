@@ -54,7 +54,8 @@ export default class Grenade extends Phaser.Physics.Arcade.Sprite {
         const x = this.x;
         const y = this.y;
 
-        const explosion = scene.add.circle(x, y, blastRadius, 0xffaa00, 0.3);
+        const explosion = scene.add.image(x, y, 'explosion').setOrigin(0.5);
+        explosion.setScale(blastRadius / 450);
         scene.time.delayedCall(200, () => explosion.destroy());
 
         scene.sound.play('explosion');
