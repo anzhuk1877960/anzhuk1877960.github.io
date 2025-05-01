@@ -14,7 +14,7 @@ export default class BrawlerEnemy extends Enemy {
         this.hasTurned = false;
     }
 
-    update(time) {
+    update() {
         if (!this.body || !this.active || !this.scene.player)
             return;
 
@@ -35,10 +35,10 @@ export default class BrawlerEnemy extends Enemy {
             const speed = this.scene.brawlerSpeed || 150;
 
             if (player.y < this.y - 5) {
-                this.body.setVelocity(0, -this.speed);
+                this.body.setVelocity(0, -speed);
                 this.rotation = Phaser.Math.DegToRad(90);
             } else if (player.y > this.y + 5) {
-                this.body.setVelocity(0, this.speed);
+                this.body.setVelocity(0, -speed);
                 this.rotation = Phaser.Math.DegToRad(270);
             } else {
                 this.body.setVelocity(0, 0);

@@ -6,7 +6,6 @@ export default class Enemy extends Phaser.Physics.Arcade.Sprite {
         scene.physics.world.once('worldstep', () => {
             if (this.body) {
                 this.body.setVelocityX(-100);
-                this.body.setAllowGravity(false);
             }
         });
         
@@ -17,9 +16,7 @@ export default class Enemy extends Phaser.Physics.Arcade.Sprite {
     takeDamage() {
         if (this.scene && this.scene.sound) {
             this.scene.sound.play('hit');
-        } else {
-            console.warn(`[ShooterEnemy] takeDamage() called but scene/sound not found. this.active=${this.active}`);
-        }
+        } 
 
         this.hp--;
         if (this.hp <= 0) {

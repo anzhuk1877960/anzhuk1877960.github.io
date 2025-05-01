@@ -4,7 +4,7 @@ export default class BootScene extends Phaser.Scene {
     }
 
     preload() {
-        this.load.setPath('../../assets/images/');
+        this.load.setPath('assets/images/');
         this.load.image('player', 'player.png');
         this.load.image('shooterEnemy', 'shooter.png');
         this.load.image('brawlerEnemy', 'brawler.png');
