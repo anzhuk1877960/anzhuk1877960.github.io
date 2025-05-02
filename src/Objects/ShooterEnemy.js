@@ -34,6 +34,7 @@ export default class ShooterEnemy extends Enemy {
         }
     }
 
+    // Handles projectile shooting behavior
     shootProjectile() {
         const projectile = this.scene.physics.add.sprite(this.x - 10, this.y, 'bullet');
         this.scene.enemyProjectiles.add(projectile);

@@ -41,6 +41,7 @@ export default class Grenade extends Phaser.Physics.Arcade.Sprite {
         }
     }
 
+    // Handles explosion behavior and visuals
     explode() {
         if (this.exploded)
             return;

@@ -33,7 +33,7 @@ export default class GameScene extends Phaser.Scene {
         this.enemyProjectiles = this.physics.add.group();
         this.coverBoxes = this.physics.add.staticGroup();
 
-        // Note: Set to true for testing
+        // Used for post-hit brief invincibility
         this.isInvincible = false;
 
         // Setting up player
@@ -123,7 +123,7 @@ export default class GameScene extends Phaser.Scene {
             }
         });
 
-        this.physics.add.collider(this.enemyProjectiles, this.coverBoxes, (proj, box) => {
+        this.physics.add.overlap(this.enemyProjectiles, this.coverBoxes, (proj, box) => {
             if (proj instanceof Grenade) {
                 proj.explode();
             } else {
@@ -131,11 +131,11 @@ export default class GameScene extends Phaser.Scene {
             }
         });
 
-        this.physics.add.collider(this.bullets, this.coverBoxes, (proj) => {
+        this.physics.add.overlap(this.bullets, this.coverBoxes, (proj) => {
             proj.destroy();
         });
 
-        this.physics.add.collider(this.playerGrenades, this.coverBoxes, (proj) => {
+        this.physics.add.overlap(this.playerGrenades, this.coverBoxes, (proj) => {
             proj.explode();
         });
 

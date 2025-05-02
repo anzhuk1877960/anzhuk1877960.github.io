@@ -13,6 +13,7 @@ export default class Enemy extends Phaser.Physics.Arcade.Sprite {
         this.hp = 1;
     }
 
+    // Handles enemy damage response
     takeDamage() {
         if (this.scene && this.scene.sound) {
             this.scene.sound.play('hit');

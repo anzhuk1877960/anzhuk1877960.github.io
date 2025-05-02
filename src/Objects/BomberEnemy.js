@@ -37,6 +37,7 @@ export default class BomberEnemy extends Enemy {
         }
     }
 
+    // Handles grenade throwing behavior
     throwGrenade() {
         const grenade = new Grenade(this.scene, this.x - 10, this.y, -100, 0, 'enemy');
         this.scene.enemyProjectiles.add(grenade);
