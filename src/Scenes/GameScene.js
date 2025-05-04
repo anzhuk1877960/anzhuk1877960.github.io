@@ -191,6 +191,7 @@ export default class GameScene extends Phaser.Scene {
         // Spawn first wave     
         this.spawnWave();
 
+        // Turn off enemyKilled listener after shutdown
         this.events.once('shutdown', () => {
             this.events.off('enemyKilled');
         });
@@ -267,10 +268,8 @@ export default class GameScene extends Phaser.Scene {
         }
     }
 
+    // Handles spawning of the next wave after scene is resumed
     handleResume() {
-        console.log('--- HANDLE RESUME FIRED ---');
-        console.log(`Current wave before increment: ${this.wave}`);
-
         if (this.enemies)
             this.enemies.clear(true, true);
 
@@ -278,10 +277,9 @@ export default class GameScene extends Phaser.Scene {
         this.waveInProgress = false;
         this.needToSpawnWave = true;
         this.wave++;
-        this.scene.get('UIScene').events.emit('updateWave', this.wave);
-        console.log(`Wave after increment: ${this.wave}`);
     }
 
+    // Handles response to player damage
     playerTakeDamage() {
         if (this.isInvincible) return;
     

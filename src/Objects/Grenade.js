@@ -8,8 +8,7 @@ export default class Grenade extends Phaser.Physics.Arcade.Sprite {
         scene.time.delayedCall(0, () => {
             if (this.body) {
                 this.setVelocity(velocityX, velocityY);
-                this.body.setAllowGravity(false); // in case gravity is affecting it
-                console.log(`[GRENADE VELOCITY SET] vx=${this.body.velocity.x}, vy=${this.body.velocity.y}`);
+                this.body.setAllowGravity(false);
             }
         });
 
