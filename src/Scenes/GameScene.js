@@ -277,6 +277,7 @@ export default class GameScene extends Phaser.Scene {
         this.waveInProgress = false;
         this.needToSpawnWave = true;
         this.wave++;
+        this.scene.get('UIScene').events.emit('updateWave', this.wave);
     }
 
     // Handles response to player damage
@@ -321,8 +322,6 @@ export default class GameScene extends Phaser.Scene {
 
     // Handles wave formation
     spawnWave() {
-        console.log(`=== Spawning WAVE ${this.wave} ===`);
-
         this.waveTimerPoints = 1000;
         this.waveInProgress = true;
         this.spawnedEnemies = 0;
@@ -340,8 +339,6 @@ export default class GameScene extends Phaser.Scene {
         const numCols = Math.min(1 + this.wave, maxCols);
         const maxRows = Math.floor(availSpaceY / (enemyWidth + 20));
         const numRows = Math.min(3 + Math.floor(this.wave / 2), maxRows);
-
-        console.log(`Spawning wave ${this.wave}: numCols=${numCols}, numRows=${numRows}`);
 
         const spacingX = 80;
         const spacingY = 70;
@@ -378,8 +375,6 @@ export default class GameScene extends Phaser.Scene {
             this.enemies.add(brawler);
             this.enemiesLeft++;
         }
-
-        console.log(`Wave ${this.wave} spawned with ${this.enemiesLeft} enemies`);
     }
 
     // Handles player melee attack
