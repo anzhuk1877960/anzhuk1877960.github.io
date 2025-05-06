@@ -8,9 +8,6 @@ export default class ShooterEnemy extends Enemy {
         this.shootCooldown = Phaser.Math.Between(1500, 3000);
         this.lastShot = 0;
         this.setFlipX(true);
-        if (this.body) {
-            this.body.setAllowGravity(false);
-        }
         this.scene = scene;
     }
 

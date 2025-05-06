@@ -8,12 +8,10 @@ export default class Grenade extends Phaser.Physics.Arcade.Sprite {
         scene.time.delayedCall(0, () => {
             if (this.body) {
                 this.setVelocity(velocityX, velocityY);
-                this.body.setAllowGravity(false);
             }
         });
 
         this.setCollideWorldBounds(true);
-        this.setBounce(0.6);
 
         this.source = source;
         this.exploded = false;

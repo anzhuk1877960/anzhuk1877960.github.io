@@ -11,7 +11,6 @@ export default class BomberEnemy extends Enemy {
         this.setFlipX(true);
         if (this.body) {
             this.body.setVelocityX(-30);
-            this.body.setAllowGravity(false);
         }
         this.hp = 2;
     }

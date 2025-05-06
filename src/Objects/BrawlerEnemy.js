@@ -6,9 +6,7 @@ export default class BrawlerEnemy extends Enemy {
         super(scene, 800, y, 'brawlerEnemy');
         this.setFlipX(true);
         if (this.body) {
-            this.body.setAllowGravity(false);
             this.body.setMaxVelocity(300, 300);
-            this.body.setDrag(0, 0);
         }
         this.speed = scene.brawlerSpeed || 150;
         this.hasTurned = false;
