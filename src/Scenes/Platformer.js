@@ -58,7 +58,7 @@ class Platformer extends Phaser.Scene {
         this.physics.world.setBounds(0, 0, this.map.widthInPixels, this.map.heightInPixels);
 
         // set up player avatar
-        this.playerSpawn = { x: 80, y: this.config.height / 2 + 45 };
+        this.playerSpawn = { x: 80, y: this.map.heightInPixels / 2 + 45 };
         my.sprite.player = this.physics.add.sprite(this.playerSpawn.x, this.playerSpawn.y, "platformer_characters", "tile_0000.png").setDepth(3);
         my.sprite.player.setCollideWorldBounds(true);
 
