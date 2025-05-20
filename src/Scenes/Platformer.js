@@ -6,7 +6,7 @@ class Platformer extends Phaser.Scene {
     init() {
         // variables and settings
         this.ACCELERATION = 500;
-        this.DRAG = 2000;    // DRAG < ACCELERATION = icy slide
+        this.DRAG = 2000;    
         this.physics.world.gravity.y = 2000;
         this.JUMP_VELOCITY = -700;
         this.SNAP_ACCEL = 1500;
@@ -23,9 +23,7 @@ class Platformer extends Phaser.Scene {
         // Create a new tilemap game object which uses 18x18 pixel tiles, and is
         this.map = this.make.tilemap({ key: "Luka-Escape" });
 
-        // Add a tileset to the map
-        // First parameter: name we gave the tileset in Tiled
-        // Second parameter: key for the tilesheet (from this.load.image in Load.js)
+        // Add tilesets to the map
         this.tilesetInd = this.map.addTilesetImage("industrial_set", "tilemap_ind_tiles");
         this.tilesetGen = this.map.addTilesetImage("general_set", "tilemap_gen_tiles");
         this.tilesetBgs = this.map.addTilesetImage("background_set", "tilemap_bgs_tiles");
@@ -40,7 +38,7 @@ class Platformer extends Phaser.Scene {
         this.spaceshipLayer = this.map.createLayer("Spaceship", [this.tilesetSpaceship], 0, 0).setDepth(5);
         this.shipPartsLayer = this.map.createLayer("Ship-Parts", [this.tilesetShipParts], 0, 0).setDepth(6);
 
-        // Make layers collidable and add damages property
+        // Make layers collidable and add other properties
         this.groundLayer.setCollisionByProperty({
             collides: true,
         });
@@ -78,14 +76,6 @@ class Platformer extends Phaser.Scene {
 
         // set up Phaser-provided cursor key input
         cursors = this.input.keyboard.createCursorKeys();
-
-        /*
-        // debug key listener (assigned to D key)
-        this.input.keyboard.on('keydown-D', () => {
-            this.physics.world.drawDebug = this.physics.world.drawDebug ? false : true
-            this.physics.world.debugGraphic.clear()
-        }, this);
-        */
 
         // Checks remaining ship parts to collect
         this.remainingCollectibles = this.countTotalCollectibles();
