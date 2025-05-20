@@ -1,23 +1,34 @@
-import BootScene from './Scenes/BootScene.js';
-import MenuScene from './Scenes/MenuScene.js';
-import GameScene from './Scenes/GameScene.js';
-import UIScene from './Scenes/UIScene.js';
-import EndScene from './Scenes/EndScene.js';
-import PowerupScene from './Scenes/PowerupScene.js'
+// debug with extreme prejudice
+"use strict"
 
-const config = {
-    type: Phaser.AUTO,
-    width: 800,
-    height: 600,
+// game config
+let config = {
+    parent: 'phaser-game',
+    type: Phaser.CANVAS,
+    render: {
+        pixelArt: true
+    },
     physics: {
         default: 'arcade',
         arcade: {
-            gravity: { y: 0 },
-            debug: false
+            debug: false,
+            gravity: {
+                x: 0,
+                y: 0
+            }
         }
     },
-    scene: [BootScene, MenuScene, GameScene, UIScene, EndScene, PowerupScene],
-    parent: 'game-container'
-};
+    width: 810,
+    height: 360,
+    scale: {
+        mode: Phaser.Scale.FIT,
+        autoCenter: Phaser.Scale.CENTER_BOTH
+    },
+    scene: [Load, Platformer]
+}
 
-new Phaser.Game(config);
+var cursors;
+const SCALE = 2.0;
+var my = {sprite: {}, text: {}};
+
+const game = new Phaser.Game(config);
